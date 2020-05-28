@@ -1,0 +1,25 @@
+@import "../../../../../styles/variables";
+
+.user {
+  background-color: #f0f0f0;
+  transition: background-color .1s ease-in-out;
+  border: 1px solid #eee;
+  &:hover {
+    background-color: #eec;
+  }
+
+  &__container {
+    padding: $padding-default;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__controls {
+    display: flex;
+  }
+
+  &__control {
+    margin: 0 4px;
+  }
+}

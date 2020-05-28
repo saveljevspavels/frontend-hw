@@ -1,0 +1,29 @@
+@import "../../../../../styles/variables";
+
+.user-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.edit-user {
+  &__form {
+    padding-left: $padding-default;
+  }
+
+  &__button {
+    margin-top: 10px;
+    &--save {
+      margin-left: 10px;
+      background-color: $color-success;
+    }
+    &--cancel {
+      background-color: $color-danger;
+    }
+    &--edit {
+      margin-left: 10px;
+      background-color: $color-info;
+    }
+  }
+}

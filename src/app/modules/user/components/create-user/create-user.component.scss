@@ -1,0 +1,11 @@
+@import "../../../../../styles/variables";
+
+.create-user {
+  &__form {
+    padding-left: $padding-default;
+  }
+  &__button {
+    margin-top: 10px;
+    background-color: $color-success;
+  }
+}

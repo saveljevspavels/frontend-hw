@@ -1,0 +1,15 @@
+<div class="user">
+  <div class="user__container">
+    <div class="user__name">
+      {{name}}
+    </div>
+    <div class="user__controls">
+      <div class="user__control">
+        <app-show-details-button [userId]="id"></app-show-details-button>
+      </div>
+      <div class="user__control">
+        <app-delete-user-button [userId]="id"></app-delete-user-button>
+      </div>
+    </div>
+  </div>
+</div>
