@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
-import {TitleComponent} from '../title/title.component';
+import { TitleComponent } from '../title/title.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -9,12 +9,8 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        HeaderComponent,
-        TitleComponent
-      ]
-    })
-    .compileComponents();
+      declarations: [HeaderComponent, TitleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -30,6 +26,8 @@ describe('HeaderComponent', () => {
 
   it('should render title', () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('app-title').textContent).toContain('Test Title');
+    expect(compiled.querySelector('app-title').textContent).toContain(
+      'Test Title'
+    );
   });
 });

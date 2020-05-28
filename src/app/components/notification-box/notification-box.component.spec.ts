@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NotificationBoxComponent } from './notification-box.component';
-import {NotificationComponent} from '../notification/notification.component';
+import { NotificationComponent } from '../notification/notification.component';
 
 describe('NotificationBoxComponent', () => {
   let component: NotificationBoxComponent;
@@ -9,12 +9,8 @@ describe('NotificationBoxComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        NotificationBoxComponent,
-        NotificationComponent,
-      ]
-    })
-    .compileComponents();
+      declarations: [NotificationBoxComponent, NotificationComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -29,21 +25,29 @@ describe('NotificationBoxComponent', () => {
 
   it('renders notification with correct class', () => {
     component.messages = {
-      notifications: ['Notification message']
+      notifications: ['Notification message'],
     };
     fixture.detectChanges();
-    const message = fixture.debugElement.nativeElement.querySelector('app-notification');
+    const message = fixture.debugElement.nativeElement.querySelector(
+      'app-notification'
+    );
     expect(message.textContent).toContain('Notification message');
-    expect(message.querySelector('.notification')).toHaveClass('notification--success');
+    expect(message.querySelector('.notification')).toHaveClass(
+      'notification--success'
+    );
   });
 
   it('renders error with correct class', () => {
     component.messages = {
-      errors: ['Error message']
+      errors: ['Error message'],
     };
     fixture.detectChanges();
-    const message = fixture.debugElement.nativeElement.querySelector('app-notification');
+    const message = fixture.debugElement.nativeElement.querySelector(
+      'app-notification'
+    );
     expect(message.textContent).toContain('Error message');
-    expect(message.querySelector('.notification')).toHaveClass('notification--danger');
+    expect(message.querySelector('.notification')).toHaveClass(
+      'notification--danger'
+    );
   });
 });

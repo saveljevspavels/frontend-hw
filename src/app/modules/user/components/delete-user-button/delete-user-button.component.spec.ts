@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteUserButtonComponent } from './delete-user-button.component';
-import {HttpClientModule} from '@angular/common/http';
-import {RouterTestingModule} from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('DeleteUserButtonComponent', () => {
   let component: DeleteUserButtonComponent;
@@ -10,13 +10,9 @@ describe('DeleteUserButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeleteUserButtonComponent ],
-      imports: [
-        HttpClientModule,
-        RouterTestingModule
-      ]
-    })
-    .compileComponents();
+      declarations: [DeleteUserButtonComponent],
+      imports: [HttpClientModule, RouterTestingModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -31,7 +27,9 @@ describe('DeleteUserButtonComponent', () => {
 
   it('should call deleteUser method on click', () => {
     spyOn(component, 'deleteUser');
-    const button = fixture.debugElement.nativeElement.querySelector('.delete-user-button');
+    const button = fixture.debugElement.nativeElement.querySelector(
+      '.delete-user-button'
+    );
     button.click();
     expect(component.deleteUser).toHaveBeenCalled();
   });

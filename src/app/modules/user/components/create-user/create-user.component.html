@@ -1,18 +1,20 @@
 <div class="create-user">
   <h3>Create New User</h3>
-  <form [formGroup]="createUserForm"
-        (ngSubmit)="onSubmit()"
-        class="create-user__form">
-
+  <form
+    [formGroup]="createUserForm"
+    (ngSubmit)="onSubmit()"
+    class="create-user__form"
+  >
     <div class="create-user__inputs">
       <div class="input-group">
         <label for="firstName">First Name</label>
-        <input id="firstName" type="text" formControlName="firstName">
+        <input id="firstName" type="text" formControlName="firstName" />
       </div>
 
-      <div *ngIf="firstName.errors
-        && firstName.errors.required
-        && !firstName.pristine"
+      <div
+        *ngIf="
+          firstName.errors && firstName.errors.required && !firstName.pristine
+        "
         class="validation-error"
       >
         First Name is required.
@@ -20,31 +22,38 @@
 
       <div class="input-group">
         <label for="lastName">Last Name</label>
-        <input id="lastName" type="text" formControlName="lastName">
+        <input id="lastName" type="text" formControlName="lastName" />
       </div>
 
-      <div *ngIf="lastName.errors
-        && lastName.errors.required
-        && !lastName.pristine"
-           class="validation-error">
+      <div
+        *ngIf="
+          lastName.errors && lastName.errors.required && !lastName.pristine
+        "
+        class="validation-error"
+      >
         Last Name is required.
       </div>
 
       <div class="input-group">
         <label for="email">Email</label>
-        <input id="email" type="text" formControlName="email">
+        <input id="email" type="text" formControlName="email" />
       </div>
 
       <div *ngIf="email.errors && !email.pristine">
-         <span *ngIf="email.errors.required"
-               class="validation-error">Email is required.</span>
-         <span *ngIf="email.errors.email"
-               class="validation-error">Invalid email.</span>
+        <span *ngIf="email.errors.required" class="validation-error"
+          >Email is required.</span
+        >
+        <span *ngIf="email.errors.email" class="validation-error"
+          >Invalid email.</span
+        >
       </div>
     </div>
 
-    <button [disabled]="createUserForm.status === 'INVALID'"
-      class="create-user__button">Create</button>
+    <button
+      [disabled]="createUserForm.status === 'INVALID'"
+      class="create-user__button"
+    >
+      Create
+    </button>
   </form>
 </div>
-

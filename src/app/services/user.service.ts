@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {map, shareReplay} from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
-import {BaseService} from './base.service';
-import {User} from '../dto/User';
-import {ServiceResponse} from '../dto/ServiceResponse';
-import {UserDetails} from '../dto/UserDetails';
-
+import { BaseService } from './base.service';
+import { User } from '../dto/User';
+import { ServiceResponse } from '../dto/ServiceResponse';
+import { UserDetails } from '../dto/UserDetails';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService extends BaseService {
-
   private _users: User[];
 
   public set users(user: User[]) {
@@ -31,19 +29,20 @@ export class UserService extends BaseService {
   getUsers(): Observable<User[]> {
     if (!this.users) {
       return this.http.get<ServiceResponse>(this.baseUrl('users')).pipe(
-        map(res => {
+        map((res) => {
           this.users = res.data.map((user: any) => {
             return this.mapUser(user);
           });
           return this.users;
         }),
-        shareReplay({ bufferSize: 1, refCount: true }));
+        shareReplay({ bufferSize: 1, refCount: true })
+      );
     }
   }
 
   getUserDetails(id: number): Observable<UserDetails> {
     return this.http.get<ServiceResponse>(this.baseUrl(`users/${id}`)).pipe(
-      map(res => {
+      map((res) => {
         return this.mapUserDetails(res.data);
       })
     );
@@ -58,33 +57,48 @@ export class UserService extends BaseService {
   }
 
   createUser(firstName: string, lastName: string, email: string) {
-    return this.http.post(this.baseUrl('users'), {
-      first_name: firstName,
-      last_name: lastName,
-      email,
-      id: new Date().valueOf()
-    }).pipe(
-      map((newUser: any) => {
-        this.users = [...this.users, this.mapUser(newUser)]; //
+    return this.http
+      .post(this.baseUrl('users'), {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        id: new Date().valueOf(),
       })
-    );
+      .pipe(
+        map((newUser: any) => {
+          this.users = [...this.users, this.mapUser(newUser)]; //
+        })
+      );
   }
 
-  editUser(id: number, firstName: string, lastName: string, email: string, avatar): Observable<UserDetails> {
-    return this.http.patch(this.baseUrl(`users/${id}`), {
-      first_name: firstName,
-      last_name: lastName,
-      email,
-      avatar
-    }).pipe(
-      map(res => {
-        if (this.users) {
-          const updatedUserIndex = this.users.indexOf(this.users.find((user: User) => user.id === id));
-          this.users[updatedUserIndex] = {...this.users[updatedUserIndex], ...this.mapUser(res)};
-        }
-        return this.mapUserDetails(res);
+  editUser(
+    id: number,
+    firstName: string,
+    lastName: string,
+    email: string,
+    avatar
+  ): Observable<UserDetails> {
+    return this.http
+      .patch(this.baseUrl(`users/${id}`), {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        avatar,
       })
-    );
+      .pipe(
+        map((res) => {
+          if (this.users) {
+            const updatedUserIndex = this.users.indexOf(
+              this.users.find((user: User) => user.id === id)
+            );
+            this.users[updatedUserIndex] = {
+              ...this.users[updatedUserIndex],
+              ...this.mapUser(res),
+            };
+          }
+          return this.mapUserDetails(res);
+        })
+      );
   }
 
   mapUserDetails(data: any): UserDetails {
@@ -105,7 +119,7 @@ export class UserService extends BaseService {
 
   mapUser(data: any): User {
     const user: User = {
-      name: `${data.first_name} ${data.last_name}`
+      name: `${data.first_name} ${data.last_name}`,
     };
     if (data.id) {
       user.id = data.id;

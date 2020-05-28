@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserDetailsComponent } from './user-details.component';
-import {UserAvatarComponent} from '../user-avatar/user-avatar.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DeleteUserButtonComponent} from '../delete-user-button/delete-user-button.component';
-import {HttpClientModule} from '@angular/common/http';
-import {RouterTestingModule} from '@angular/router/testing';
+import { UserAvatarComponent } from '../user-avatar/user-avatar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DeleteUserButtonComponent } from '../delete-user-button/delete-user-button.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
@@ -18,16 +18,15 @@ describe('UserDetailsComponent', () => {
         UserAvatarComponent,
         UserDetailsComponent,
         DeleteUserButtonComponent,
-        UserAvatarComponent
+        UserAvatarComponent,
       ],
       imports: [
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        RouterTestingModule
-      ]
-    })
-    .compileComponents();
+        RouterTestingModule,
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -38,7 +37,8 @@ describe('UserDetailsComponent', () => {
       email: 'janet.weaver@reqres.in',
       firstName: 'Janet',
       lastName: 'Weaver',
-      avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg'
+      avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg',
     };
     fixture.detectChanges();
   });
@@ -49,11 +49,21 @@ describe('UserDetailsComponent', () => {
 
   it('should render user data', () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.input-group:nth-child(1)').textContent).toContain('2');
-    expect(compiled.querySelector('.input-group:nth-child(2)').textContent).toContain('N/A');
-    expect(compiled.querySelector('.input-group:nth-child(3)').textContent).toContain('Janet');
-    expect(compiled.querySelector('.input-group:nth-child(4)').textContent).toContain('Weaver');
-    expect(compiled.querySelector('.input-group:nth-child(5)').textContent).toContain('janet.weaver@reqres.in');
+    expect(
+      compiled.querySelector('.input-group:nth-child(1)').textContent
+    ).toContain('2');
+    expect(
+      compiled.querySelector('.input-group:nth-child(2)').textContent
+    ).toContain('N/A');
+    expect(
+      compiled.querySelector('.input-group:nth-child(3)').textContent
+    ).toContain('Janet');
+    expect(
+      compiled.querySelector('.input-group:nth-child(4)').textContent
+    ).toContain('Weaver');
+    expect(
+      compiled.querySelector('.input-group:nth-child(5)').textContent
+    ).toContain('janet.weaver@reqres.in');
   });
 
   it('should enter edit mode', () => {

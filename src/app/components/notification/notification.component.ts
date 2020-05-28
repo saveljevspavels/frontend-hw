@@ -1,12 +1,11 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.scss']
+  styleUrls: ['./notification.component.scss'],
 })
 export class NotificationComponent {
-
   @Input()
   public class: string;
 
@@ -16,5 +15,4 @@ export class NotificationComponent {
   closeNotification() {
     this.close.emit();
   }
-
 }

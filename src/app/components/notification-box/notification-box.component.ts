@@ -1,14 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {NotificationService} from '../../services/notification.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-notification-box',
   templateUrl: './notification-box.component.html',
-  styleUrls: ['./notification-box.component.scss']
+  styleUrls: ['./notification-box.component.scss'],
 })
 export class NotificationBoxComponent implements OnInit {
-
   public messages;
   public removeMessage;
 
@@ -17,7 +16,5 @@ export class NotificationBoxComponent implements OnInit {
     this.removeMessage = NotificationService.removeMessage;
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

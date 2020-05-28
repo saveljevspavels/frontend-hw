@@ -1,87 +1,129 @@
 <div class="user-details">
   <app-user-avatar [url]="userDetails.avatar"></app-user-avatar>
   <div class="user-details__data">
-    <form [formGroup]="editUserForm"
-          (ngSubmit)="onSubmit()"
-          class="edit-user__form">
-
+    <form
+      [formGroup]="editUserForm"
+      (ngSubmit)="onSubmit()"
+      class="edit-user__form"
+    >
       <div class="edit-user__inputs">
         <div class="input-group">
           <label>User Id</label>
-          <p>{{userDetails.id}}</p>
+          <p>{{ userDetails.id }}</p>
         </div>
 
         <div class="input-group">
           <label>Last updated at</label>
-          <p>{{(userDetails.updatedAt | date: 'medium') || 'N/A'}}</p>
+          <p>{{ (userDetails.updatedAt | date: 'medium') || 'N/A' }}</p>
         </div>
 
         <div class="input-group">
           <label for="firstName">First Name</label>
-          <input *ngIf="editMode" id="firstName" type="text" formControlName="firstName">
-          <p *ngIf="!editMode">{{userDetails.firstName}}</p>
+          <input
+            *ngIf="editMode"
+            id="firstName"
+            type="text"
+            formControlName="firstName"
+          />
+          <p *ngIf="!editMode">{{ userDetails.firstName }}</p>
         </div>
 
-        <div *ngIf="editMode
-        && firstName.errors
-        && firstName.errors.required
-        && !firstName.pristine"
-             class="validation-error"
+        <div
+          *ngIf="
+            editMode &&
+            firstName.errors &&
+            firstName.errors.required &&
+            !firstName.pristine
+          "
+          class="validation-error"
         >
           First Name is required.
         </div>
 
         <div class="input-group">
           <label for="lastName">Last Name</label>
-          <input *ngIf="editMode" id="lastName" type="text" formControlName="lastName">
-          <p *ngIf="!editMode">{{userDetails.lastName}}</p>
+          <input
+            *ngIf="editMode"
+            id="lastName"
+            type="text"
+            formControlName="lastName"
+          />
+          <p *ngIf="!editMode">{{ userDetails.lastName }}</p>
         </div>
 
-        <div *ngIf="editMode
-        && lastName.errors
-        && lastName.errors.required
-        && !lastName.pristine"
-             class="validation-error">
+        <div
+          *ngIf="
+            editMode &&
+            lastName.errors &&
+            lastName.errors.required &&
+            !lastName.pristine
+          "
+          class="validation-error"
+        >
           Last Name is required.
         </div>
 
         <div class="input-group">
           <label for="email">Email</label>
-          <input *ngIf="editMode" id="email" type="text" formControlName="email">
-          <p *ngIf="!editMode">{{userDetails.email}}</p>
+          <input
+            *ngIf="editMode"
+            id="email"
+            type="text"
+            formControlName="email"
+          />
+          <p *ngIf="!editMode">{{ userDetails.email }}</p>
         </div>
 
         <div *ngIf="editMode && email.errors && !email.pristine">
-         <span *ngIf="email.errors.required"
-               class="validation-error">Email is required.</span>
-          <span *ngIf="email.errors.email"
-                class="validation-error">Invalid email.</span>
+          <span *ngIf="email.errors.required" class="validation-error"
+            >Email is required.</span
+          >
+          <span *ngIf="email.errors.email" class="validation-error"
+            >Invalid email.</span
+          >
         </div>
 
         <div class="input-group">
           <label for="avatar">Avatar URL</label>
-          <input *ngIf="editMode" id="avatar" type="text" formControlName="avatar">
-          <p *ngIf="!editMode">{{userDetails.avatar}}</p>
+          <input
+            *ngIf="editMode"
+            id="avatar"
+            type="text"
+            formControlName="avatar"
+          />
+          <p *ngIf="!editMode">{{ userDetails.avatar }}</p>
         </div>
       </div>
 
       <div *ngIf="!editMode">
-        <app-delete-user-button [userId]="userDetails.id"></app-delete-user-button>
-        <button (click)="toggleEdit()"
-                type="button"
-                class="edit-user__button edit-user__button--edit">Edit</button>
+        <app-delete-user-button
+          [userId]="userDetails.id"
+        ></app-delete-user-button>
+        <button
+          (click)="toggleEdit()"
+          type="button"
+          class="edit-user__button edit-user__button--edit"
+        >
+          Edit
+        </button>
       </div>
-
 
       <div *ngIf="editMode">
-        <button (click)="toggleEdit()"
-                type="button"
-                class="edit-user__button edit-user__button--cancel">Cancel</button>
+        <button
+          (click)="toggleEdit()"
+          type="button"
+          class="edit-user__button edit-user__button--cancel"
+        >
+          Cancel
+        </button>
 
-        <button [disabled]="editUserForm.status === 'INVALID'"
-                class="edit-user__button edit-user__button--save">Save</button>
+        <button
+          [disabled]="editUserForm.status === 'INVALID'"
+          class="edit-user__button edit-user__button--save"
+        >
+          Save
+        </button>
       </div>
-
     </form>
   </div>
 </div>

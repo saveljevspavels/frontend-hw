@@ -2,13 +2,15 @@
   <app-notification
     *ngFor="let notification of messages.notifications; let i = index"
     (close)="removeMessage(i, 'notifications')"
-    [class]="'success'">
-    {{notification}}
+    [class]="'success'"
+  >
+    {{ notification }}
   </app-notification>
   <app-notification
     *ngFor="let notification of messages.errors; let i = index"
     (close)="removeMessage(i, 'errors')"
-    [class]="'danger'">
-    {{notification}}
+    [class]="'danger'"
+  >
+    {{ notification }}
   </app-notification>
 </div>

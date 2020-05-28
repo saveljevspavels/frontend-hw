@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateUserComponent } from './create-user.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CreateUserComponent', () => {
   let component: CreateUserComponent;
@@ -10,14 +10,9 @@ describe('CreateUserComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateUserComponent ],
-      imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule
-      ]
-    })
-    .compileComponents();
+      declarations: [CreateUserComponent],
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -36,7 +31,9 @@ describe('CreateUserComponent', () => {
     component.createUserForm.controls.lastName.setValue('Last');
     component.createUserForm.controls.email.setValue('email@mail.com');
     fixture.detectChanges();
-    const button = fixture.debugElement.nativeElement.querySelector('.create-user__button');
+    const button = fixture.debugElement.nativeElement.querySelector(
+      '.create-user__button'
+    );
     button.click();
     expect(component.onSubmit).toHaveBeenCalled();
   });
@@ -45,7 +42,9 @@ describe('CreateUserComponent', () => {
     spyOn(component, 'onSubmit');
     component.createUserForm.controls.email.setValue('123');
     fixture.detectChanges();
-    const button = fixture.debugElement.nativeElement.querySelector('.create-user__button');
+    const button = fixture.debugElement.nativeElement.querySelector(
+      '.create-user__button'
+    );
     button.click();
     expect(component.onSubmit).not.toHaveBeenCalled();
   });

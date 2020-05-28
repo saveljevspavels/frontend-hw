@@ -8,9 +8,8 @@ describe('NotificationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationComponent ]
-    })
-    .compileComponents();
+      declarations: [NotificationComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -25,7 +24,9 @@ describe('NotificationComponent', () => {
 
   it('should call close method', () => {
     spyOn(component, 'closeNotification');
-    const button = fixture.debugElement.nativeElement.querySelector('.notification__close');
+    const button = fixture.debugElement.nativeElement.querySelector(
+      '.notification__close'
+    );
     button.click();
     expect(component.closeNotification).toHaveBeenCalled();
   });

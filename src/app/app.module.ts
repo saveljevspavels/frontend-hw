@@ -1,16 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
-import {UserModule} from './modules/user/user.module';
+import { UserModule } from './modules/user/user.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TitleComponent } from './components/title/title.component';
-import {NotificationBoxComponent} from './components/notification-box/notification-box.component';
-import {NotificationComponent} from './components/notification/notification.component';
-import {HttpErrorInterceptor} from './services/http-error-interceptor.service';
+import { NotificationBoxComponent } from './components/notification-box/notification-box.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { HttpErrorInterceptor } from './services/http-error-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -21,15 +21,10 @@ import {HttpErrorInterceptor} from './services/http-error-interceptor.service';
     NotificationBoxComponent,
     NotificationComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    UserModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, UserModule],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

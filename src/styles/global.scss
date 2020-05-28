@@ -1,6 +1,7 @@
-@import "variables";
+@import 'variables';
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -12,7 +13,8 @@ body {
   overflow-x: hidden;
 }
 
-input, button {
+input,
+button {
   padding: 10px 20px;
   font-size: 15px;
   border: 1px solid #ccc;
@@ -21,7 +23,7 @@ input, button {
 
 button {
   font-weight: bold;
-  transition: opacity .1s ease-in-out;
+  transition: opacity 0.1s ease-in-out;
   opacity: 0.8;
   min-width: 90px;
   &:not([disabled]) {
@@ -33,7 +35,7 @@ button {
 }
 
 input {
-  max-width:250px;
+  max-width: 250px;
 }
 
 label {

@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserComponent } from './user.component';
-import {ShowDetailsButtonComponent} from '../show-details-button/show-details-button.component';
-import {DeleteUserButtonComponent} from '../delete-user-button/delete-user-button.component';
-import {RouterTestingModule} from '@angular/router/testing';
-import {HttpClientModule} from '@angular/common/http';
+import { ShowDetailsButtonComponent } from '../show-details-button/show-details-button.component';
+import { DeleteUserButtonComponent } from '../delete-user-button/delete-user-button.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -15,14 +15,10 @@ describe('UserComponent', () => {
       declarations: [
         UserComponent,
         ShowDetailsButtonComponent,
-        DeleteUserButtonComponent
+        DeleteUserButtonComponent,
       ],
-      imports: [
-        RouterTestingModule,
-        HttpClientModule
-      ]
-    })
-    .compileComponents();
+      imports: [RouterTestingModule, HttpClientModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,8 +1,8 @@
-@import "../../../../../styles/variables";
+@import '../../../../../styles/variables';
 
 .user {
   background-color: #f0f0f0;
-  transition: background-color .1s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
   border: 1px solid #eee;
   &:hover {
     background-color: #eec;

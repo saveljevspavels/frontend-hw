@@ -1,20 +1,22 @@
-import {NavigationStart, Router} from '@angular/router';
-import {Injectable} from '@angular/core';
-import {filter} from 'rxjs/operators';
+import { NavigationStart, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NotificationService {
   constructor(private router: Router) {
-    router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe(() => {
-      NotificationService.clearNotifications();
-    });
+    router.events
+      .pipe(filter((event) => event instanceof NavigationStart))
+      .subscribe(() => {
+        NotificationService.clearNotifications();
+      });
   }
 
   public static messages = {
     notifications: [],
-    errors: []
+    errors: [],
   };
 
   static addError(message: string) {
