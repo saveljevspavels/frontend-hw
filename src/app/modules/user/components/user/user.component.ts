@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { User } from '../../../../dto/user.dto';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -7,10 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
   @Input()
-  public name: string;
-
-  @Input()
-  public id: number;
+  public user: User;
 
   constructor() {}
 

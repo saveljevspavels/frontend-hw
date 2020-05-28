@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { UserDetails } from '../../../../dto/UserDetails';
+import { UserDetails } from '../../../../dto/user-details.dto';
 
 @Component({
   selector: 'app-user-details-page',

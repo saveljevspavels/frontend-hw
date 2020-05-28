@@ -7,7 +7,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 
-import { NotificationService } from './notification.service';
+import { NotificationService } from '../services/notification.service';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {

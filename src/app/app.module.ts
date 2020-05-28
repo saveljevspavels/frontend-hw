@@ -10,7 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { TitleComponent } from './components/title/title.component';
 import { NotificationBoxComponent } from './components/notification-box/notification-box.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { HttpErrorInterceptor } from './services/http-error-interceptor.service';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 
 @NgModule({
   declarations: [

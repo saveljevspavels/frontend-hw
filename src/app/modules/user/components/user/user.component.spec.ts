@@ -24,8 +24,10 @@ describe('UserComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UserComponent);
     component = fixture.componentInstance;
-    component.name = 'John Doe';
-    component.id = 0;
+    component.user = {
+      name: 'John Doe',
+      id: 1
+    };
     fixture.detectChanges();
   });
 

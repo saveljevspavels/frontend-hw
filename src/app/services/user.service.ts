@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 import { BaseService } from './base.service';
-import { User } from '../dto/User';
-import { ServiceResponse } from '../dto/ServiceResponse';
-import { UserDetails } from '../dto/UserDetails';
+import { User } from '../dto/user.dto';
+import { ServiceResponse } from '../dto/service-response.dto';
+import { UserResponse } from '../dto/user-response.dto';
+import { UserDetails } from '../dto/user-details.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -29,8 +30,8 @@ export class UserService extends BaseService {
   getUsers(): Observable<User[]> {
     if (!this.users) {
       return this.http.get<ServiceResponse>(this.baseUrl('users')).pipe(
-        map((res) => {
-          this.users = res.data.map((user: any) => {
+        map((res: ServiceResponse) => {
+          this.users = res.data.map((user: UserResponse) => {
             return this.mapUser(user);
           });
           return this.users;
@@ -42,7 +43,7 @@ export class UserService extends BaseService {
 
   getUserDetails(id: number): Observable<UserDetails> {
     return this.http.get<ServiceResponse>(this.baseUrl(`users/${id}`)).pipe(
-      map((res) => {
+      map((res: ServiceResponse) => {
         return this.mapUserDetails(res.data);
       })
     );
@@ -51,7 +52,7 @@ export class UserService extends BaseService {
   deleteUser(id: number) {
     return this.http.delete(this.baseUrl(`users/${id}`)).pipe(
       map(() => {
-        this.users = this.users.filter((user) => user.id !== id);
+        this.users = this.users.filter((user: User) => user.id !== id);
       })
     );
   }
@@ -65,7 +66,7 @@ export class UserService extends BaseService {
         id: new Date().valueOf(),
       })
       .pipe(
-        map((newUser: any) => {
+        map((newUser: UserResponse) => {
           this.users = [...this.users, this.mapUser(newUser)]; //
         })
       );
@@ -86,7 +87,7 @@ export class UserService extends BaseService {
         avatar,
       })
       .pipe(
-        map((res) => {
+        map((res: UserResponse) => {
           if (this.users) {
             const updatedUserIndex = this.users.indexOf(
               this.users.find((user: User) => user.id === id)
@@ -101,7 +102,7 @@ export class UserService extends BaseService {
       );
   }
 
-  mapUserDetails(data: any): UserDetails {
+  mapUserDetails(data: UserResponse): UserDetails {
     const userDetails: UserDetails = {
       firstName: data.first_name,
       lastName: data.last_name,
@@ -117,7 +118,7 @@ export class UserService extends BaseService {
     return userDetails;
   }
 
-  mapUser(data: any): User {
+  mapUser(data: UserResponse): User {
     const user: User = {
       name: `${data.first_name} ${data.last_name}`,
     };

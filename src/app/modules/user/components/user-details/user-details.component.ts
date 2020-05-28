@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-import { UserDetails } from '../../../../dto/UserDetails';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { UserService } from '../../../../services/user.service';
 import { NotificationService } from '../../../../services/notification.service';
+import { UserDetails } from '../../../../dto/user-details.dto';
 
 @Component({
   selector: 'app-user-details',
